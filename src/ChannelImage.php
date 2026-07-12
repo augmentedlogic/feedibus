@@ -12,19 +12,22 @@ class ChannelImage
     private ?string $title = null;
     private ?string $link = null;
 
-    public function setUrl(string $url): void
+    public function url(string $url): ChannelImage
     {
        $this->url = $url;
+       return $this;
     }
 
-    public function setTitle(string $title): void
+    public function title(string $title): ChannelImage
     {
        $this->title = $title;
+       return $this;
     }
 
-    public function setLink(string $link): void
+    public function link(string $link): ChannelImage
     {
        $this->link = $link;
+       return $this;
     }
 
     public function getUrl()
