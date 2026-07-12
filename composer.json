@@ -2,6 +2,7 @@
   "name": "augmentedlogic/php-feedit",
   "type": "library",
   "description": "A relatively simple RSS writer",
+  "homepage": "https://github.com/augmentedlogic/php-feedit",
   "keywords": [
     "rss",
     "generator",
@@ -9,7 +10,6 @@
     "feed",
     "php"
   ],
-  "homepage": "https://github.com/wolfha/php-feedit",
   "license": "MIT",
   "authors": [
     {
@@ -21,7 +21,7 @@
     "php": ">=8.4"
   },
   "autoload": {
-    "psr-0": {
+    "psr-4": {
       "com\\augmentedlogc\\feedit\\": "src"
     }
   }
