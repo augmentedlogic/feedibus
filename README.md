@@ -1,11 +1,25 @@
 # php-feedit
 
-Fork of [https://github.com/suin/php-rss-writer](\Suin\RSSWriter) (July 2026), work in progress
+Originally a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-writer) (July 2026), work in progress
 
-## Quick demo
+# Changelog
+
+v0.1
+
+* added ChannelImage class
+* some preliminary typing for php 8
+
+## Usage
 
 ```php
 $feed = new Feed();
+
+$channelImage = new ChannelImage();
+$channelImage->url("https://example.com/icon.png")
+             ->link("https://example.com/icon.png")
+             ->title("Acme Ltd Logo");
+
+
 
 $channel = new Channel();
 $channel
@@ -14,6 +28,7 @@ $channel
     ->url('http://blog.example.com')
     ->feedUrl('http://blog.example.com/rss')
     ->language('en-US')
+    ->image($channelImage)
     ->copyright('Copyright 2012, Foo Bar')
     ->pubDate(strtotime('Tue, 21 Aug 2012 19:50:37 +0900'))
     ->lastBuildDate(strtotime('Tue, 21 Aug 2012 19:50:37 +0900'))
@@ -34,6 +49,7 @@ $item
     ->preferCdata(true) // By this, title and description become CDATA wrapped HTML.
     ->appendTo($channel);
 
+
 // Podcast item
 $item = new Item();
 $item
@@ -42,6 +58,9 @@ $item
     ->url('http://podcast.example.com/2012/08/21/podcast-entry/')
     ->enclosure('http://podcast.example.com/2012/08/21/podcast.mp3', 4889, 'audio/mpeg')
     ->appendTo($channel);
+
+
+
 
 echo $feed; // or echo $feed->render();
 ```
@@ -56,6 +75,11 @@ Output:
     <link>http://blog.example.com</link>
     <description>Channel Description</description>
     <language>en-US</language>
+    <image>
+      <url>https://example.com/icon.png</url>
+      <title>Acme Ltd Logo</title>
+      <link>https://example.com/icon.png</link>
+    </image>
     <copyright>Copyright 2012, Foo Bar</copyright>
     <pubDate>Tue, 21 Aug 2012 10:50:37 +0000</pubDate>
     <lastBuildDate>Tue, 21 Aug 2012 10:50:37 +0000</lastBuildDate>
