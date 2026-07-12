@@ -37,6 +37,24 @@ class Channel implements ChannelInterface
     /** @var string[] */
     protected $pubsubhubbub;
 
+
+	/**
+	 * @var string
+	 */
+	protected $imageUrl = null;
+
+	/**
+	 * @var string
+	 */
+	protected $imageTitle = null;
+
+	/**
+	 * @var string
+	 */
+	protected $imageLink = null;
+
+
+
     /** @var ItemInterface[] */
     protected $items = [];
 
@@ -182,6 +200,14 @@ class Channel implements ChannelInterface
         return $this;
     }
 
+    public function image(ChannelImage $channel_image): Channel
+    {
+		$this->imageUrl = $channel_image->getUrl();
+		$this->imageTitle = $channel_image->getTitle();
+		$this->imageLink = $channel_image->getLink();
+		return $this;
+    }
+
     /**
      * Return XML object
      * @return SimpleXMLElement
@@ -192,6 +218,7 @@ class Channel implements ChannelInterface
         $xml->addChild('title', $this->title);
         $xml->addChild('link', $this->url);
         $xml->addChild('description', $this->description);
+
 
         if($this->feedUrl !== null) {
             $link = $xml->addChild('atom:link', '', "http://www.w3.org/2005/Atom");
@@ -229,6 +256,19 @@ class Channel implements ChannelInterface
             $hubUrl = $xml->addChild('xmlns:atom:link');
             $hubUrl->addAttribute('rel', 'hub');
             $hubUrl->addAttribute('href', $this->pubsubhubbub['hubUrl']);
+        }
+
+        if($this->imageUrl !== null || $this->imageTitle !== null || $this->imageLink !== null) {
+            $imagexml = $xml->addChild("image");
+		if ($this->imageUrl !== null) {
+	            $imagexml->addChild('url', $this->imageUrl);
+		}
+		if ($this->imageTitle !== null) {
+	            $imagexml->addChild('title', $this->imageTitle);
+		}
+		if ($this->imageLink !== null) {
+	            $imagexml->addChild('link', $this->imageLink);
+		}
         }
 
         foreach ($this->items as $item) {
