@@ -2,10 +2,6 @@
 
 Fork of [https://github.com/suin/php-rss-writer](\Suin\RSSWriter) (July 2026), work in progress
 
-## History
-
-`\Suin\RSSWriter` is yet another simple RSS writer library for PHP 5.4 or later. This component is Licensed under MIT license.
-
 ## Quick demo
 
 ```php
@@ -83,40 +79,6 @@ Output:
     </item>
   </channel>
 </rss>
-```
-
-## Installation
-
-### Easy installation
-
-You can install directly via [Composer](https://getcomposer.org/):
-
-```bash
-$ composer require suin/php-rss-writer
-```
-
-### Manual installation
-
-Add the following code to your `composer.json` file:
-
-```json
-{
-	"require": {
-		"suin/php-rss-writer": ">=1.0"
-	}
-}
-```
-
-...and run composer to install it:
-
-```bash
-$ composer install
-```
-
-Finally, include `vendor/autoload.php` in your product:
-
-```php
-require_once 'vendor/autoload.php';
 ```
 
 ## License
