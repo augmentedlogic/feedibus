@@ -22,7 +22,7 @@
   },
   "autoload": {
     "psr-0": {
-      "com\augmentedlogc\feedit": "src"
+      "com\\augmentedlogc\\feedit\\": "src"
     }
   }
 }
