@@ -1,10 +1,9 @@
 <?php
 
-namespace Suin\RSSWriter;
+namespace com\augmentedlogic\feedit;
 
 /**
  * Class SimpleXMLElement
- * @package Suin\RSSWriter
  */
 class SimpleXMLElement extends \SimpleXMLElement
 {

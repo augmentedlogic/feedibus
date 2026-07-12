@@ -1,18 +1,12 @@
-# \Suin\RSSWriter
+# php-feedit
+
+Fork of [https://github.com/suin/php-rss-writer](\Suin\RSSWriter) (July 2026), work in progress
+
+## History
 
 `\Suin\RSSWriter` is yet another simple RSS writer library for PHP 5.4 or later. This component is Licensed under MIT license.
 
-This library can also be used to publish Podcasts.
-
-[![Latest Stable Version](https://poser.pugx.org/suin/php-rss-writer/v/stable)](https://packagist.org/packages/suin/php-rss-writer)
-[![Total Downloads](https://poser.pugx.org/suin/php-rss-writer/downloads)](https://packagist.org/packages/suin/php-rss-writer)
-[![Daily Downloads](https://poser.pugx.org/suin/php-rss-writer/d/daily)](https://packagist.org/packages/suin/php-rss-writer)
-[![License](https://poser.pugx.org/suin/php-rss-writer/license)](https://packagist.org/packages/suin/php-rss-writer)
-[![Build Status](https://travis-ci.org/suin/php-rss-writer.svg?branch=master)](https://travis-ci.org/suin/php-rss-writer)
-[![Codacy Badge](https://api.codacy.com/project/badge/grade/1c5e4e28e7e24f6ab7221b2166b5b6c7)](https://www.codacy.com/app/suinyeze/php-rss-writer)
-
 ## Quick demo
-
 
 ```php
 $feed = new Feed();
@@ -123,24 +117,6 @@ Finally, include `vendor/autoload.php` in your product:
 
 ```php
 require_once 'vendor/autoload.php';
-```
-
-## How to use
-
-The [`examples`](examples) directory contains usage examples for RSSWriter.
-
-If you want to know APIs, please see [`FeedInterface`](src/Suin/RSSWriter/FeedInterface.php), [`ChannelInterface`](src/Suin/RSSWriter/ChannelInterface.php) and [`ItemInterface`](src/Suin/RSSWriter/ItemInterface.php).
-
-## How to Test
-
-```sh
-$ vendor/bin/phpunit
-```
-
-## Test through PHP 5.4 ~ PHP 7.0
-
-```console
-$ docker-compose up
 ```
 
 ## License

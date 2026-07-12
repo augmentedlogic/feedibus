@@ -1,7 +1,7 @@
 {
-  "name": "suin/php-rss-writer",
+  "name": "augmentedlogic/php-feedit",
   "type": "library",
-  "description": "Yet another simple RSS writer library for PHP 5.4 or later.",
+  "description": "A simple RSS writer",
   "keywords": [
     "rss",
     "generator",
@@ -13,8 +13,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "suin",
-      "email": "suinyeze@gmail.com"
+      "name": "Wolfgang Hauptfleisch",
+      "email": "dev@augmentedlogic.com"
     }
   ],
   "require": {
@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Suin\\RSSWriter": "src"
+      "com\augmentedlogc\feedit": "src"
     }
   }
 }

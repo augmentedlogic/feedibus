@@ -1,10 +1,9 @@
 <?php
 
-namespace Suin\RSSWriter;
+namespace com\augmentedlogic\feedit;
 
 /**
  * Class Item
- * @package Suin\RSSWriter
  */
 class Item implements ItemInterface
 {

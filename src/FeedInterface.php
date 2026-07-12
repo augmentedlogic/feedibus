@@ -1,10 +1,9 @@
 <?php
 
-namespace Suin\RSSWriter;
+namespace com\augmentedlogic\feedit;
 
 /**
  * Interface FeedInterface
- * @package Suin\RSSWriter
  */
 interface FeedInterface
 {

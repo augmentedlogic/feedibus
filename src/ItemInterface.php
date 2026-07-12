@@ -1,10 +1,9 @@
 <?php
 
-namespace Suin\RSSWriter;
+namespace com\augmentedlogic\feedit;
 
 /**
  * Interface ItemInterface
- * @package Suin\RSSWriter
  */
 interface ItemInterface
 {
@@ -77,14 +76,12 @@ interface ItemInterface
 
     /**
      * Append item to the channel
-     * @param \Suin\RSSWriter\ChannelInterface $channel
      * @return $this
      */
     public function appendTo(ChannelInterface $channel);
 
     /**
      * Return XML object
-     * @return \Suin\RSSWriter\SimpleXMLElement
      */
     public function asXML();
 }

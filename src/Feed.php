@@ -1,12 +1,11 @@
 <?php
 
-namespace Suin\RSSWriter;
+namespace com\augmentedlogic\feedit;
 
 use DOMDocument;
 
 /**
  * Class Feed
- * @package Suin\RSSWriter
  */
 class Feed implements FeedInterface
 {
