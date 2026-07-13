@@ -226,8 +226,22 @@ class Item implements ItemInterface
         }
 
         if (!empty($this->media)) {
-            $mediacontent = $xml->addChild('media:content');
-            $mediacontent->addAttribute('url', $this->media->getUrl());
+            $mediacontent = $xml->addChild('media:content','',"http://search.yahoo.com/mrss");
+            if($this->media->getUrl() !== null) {
+                $mediacontent->addAttribute('url', $this->media->getUrl());
+            }
+            if($this->media->getFilesize() !== null) {
+                $mediacontent->addAttribute('fileSize', $this->media->getFilesize());
+            }
+
+            if($this->media->getTitle() !== null) {
+                $mediatitle = $xml->addChild('media:title',$this->media->getTitle(),"http://search.yahoo.com/mrss");
+                $mediatitle->addAttribute('type', 'plain');
+            }
+
+            $mediadescription = $xml->addChild('media:description','',"http://search.yahoo.com/mrss");
+            $mediathumbnail = $xml->addChild('media:thumbnail','',"http://search.yahoo.com/mrss");
+            $mediacategory = $xml->addChild('media:category','',"http://search.yahoo.com/mrss");
         }
 
         return $xml;
