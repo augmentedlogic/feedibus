@@ -4,7 +4,7 @@ Originally a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-write
 
 # Changelog
 
-v0.1
+v0.2
 
 * added ChannelImage class
 * some preliminary typing for php 8
