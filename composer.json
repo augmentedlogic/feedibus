@@ -1,8 +1,8 @@
 {
-  "name": "augmentedlogic/php-feedit",
+  "name": "augmentedlogic/feedibus",
   "type": "library",
   "description": "A relatively simple RSS writer",
-  "homepage": "https://github.com/augmentedlogic/php-feedit",
+  "homepage": "https://github.com/augmentedlogic/php-feedibus",
   "keywords": [
     "rss",
     "generator",
