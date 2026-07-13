@@ -40,6 +40,9 @@ class Item implements ItemInterface
     /** @var string */
     protected $creator;
 
+    /** @var MediaItem */
+    protected $media;
+
     protected $preferCdata = false;
 
     public function title($title)
@@ -72,7 +75,7 @@ class Item implements ItemInterface
         return $this;
     }
 
-    public function categories(array $categories) 
+    public function categories(array $categories)
     {
         foreach ($categories as $cat) {
             $domain = null;
@@ -119,6 +122,11 @@ class Item implements ItemInterface
     public function preferCdata($preferCdata)
     {
         $this->preferCdata = (bool)$preferCdata;
+        return $this;
+    }
+
+    public function media(MediaItem $media) {
+        $this->media = $media;
         return $this;
     }
 
@@ -193,6 +201,11 @@ class Item implements ItemInterface
 
         if (!empty($this->creator)) {
             $xml->addChild('dc:creator', $this->creator,"http://purl.org/dc/elements/1.1/");
+        }
+
+        if (!empty($this->media)) {
+            $mediacontent = $xml->addChild('media:content');
+            $mediacontent->addAttribute('url', $this->media->getUrl());
         }
 
         return $xml;
