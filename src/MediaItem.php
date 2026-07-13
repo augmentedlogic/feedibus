@@ -15,30 +15,43 @@ class MediaItem
     private ?int $duration = null;
     private ?int $width = null;
     private ?int $height = null;
-    private ?string $mediatype = null;
+    private ?string $expression = null;  // e.g. "full"
+    private ?int $bitrate = null;
+    private ?int $framerate = null;
+    private ?float $samplingrate = null;  // e.g. 44.1
+    private ?int $channels = null;
+    private ?string $lang = null;
     // <media:title>
     private ?string $title = null;
-    // <media:description>
-    private ?string $description = null;
+    private string $title_type = 'plain';
     // <media:thumbnail>
     private ?string $thumbnail = null;
     private ?int $thumbnail_width = null;
     private ?int $thumbnail_height = null;
-    private ?string $keywords = null;
-    private ?string $category = null;
+    // <media:description>
+    private ?string $description = null;
+    // <media:keywords>
+    private ?array $keywords = null;
+    // <media:player>
     private ?string $playerUrl = null;
     private ?int $playerWith = null;
     private ?int $playerHeight = null;
+    // NOT YET IMPLEMENTED
+    private ?string $category = null;
+    // <media:rating>
+    private ?string $rating = null;
+    // <media:hash>
+    private ?string $hash = null;
+    // <media:copyright>
+    private ?string $copyright = null;
+    private ?string $copyright_url = null;
 
+    /**
+     * media:content
+     */
     public function url(string $url): MediaItem
     {
         $this->url = $url;
-        return $this;
-    }
-
-    public function title(string $title): MediaItem
-    {
-        $this->title = $title;
         return $this;
     }
 
@@ -78,6 +91,56 @@ class MediaItem
         return $this;
     }
 
+    public function bitrate(int $bitrate): MediaItem
+    {
+        $this->bitrate = $bitrate;
+        return $this;
+    }
+
+    public function framerate(int $framerate): MediaItem
+    {
+        $this->framerate = $framerate;
+        return $this;
+    }
+
+    public function samplingrate(float $samplingrate): MediaItem
+    {
+        $this->samplingrate = $samplingrate;
+        return $this;
+    }
+
+    public function channels(int $channels): MediaItem
+    {
+        $this->channels = $channels;
+        return $this;
+    }
+
+    public function lang(string $lang): MediaItem
+    {
+        $this->lang = $lang;
+        return $this;
+    }
+
+    public function expression(string $expression): MediaItem
+    {
+        $this->expression = $expression;
+        return $this;
+    }
+
+    /**
+     * <media:title>
+     */
+    public function title(string $title, ?string $title_type = 'plain'): MediaItem
+    {
+        // TODO html
+        $this->title = $title;
+        $this->title_type = $title_type;
+        return $this;
+    }
+
+    /**
+     * <media:thumbnail>
+     */
     public function thumbnail(string $thumbnail): MediaItem
     {
         $this->thumbnail = $thumbnail;
@@ -96,16 +159,47 @@ class MediaItem
         return $this;
     }
 
-    // getters
+    // <media:description>
+    public function description(string $description): MediaItem
+    {
+        $this->description = $description;
+        return $this;
+    }
 
+    // <media:keywords>
+    public function keywords(array $keywords): MediaItem
+    {
+        $this->keywords = $keywords;
+        return $this;
+    }
+
+    // <media:player>
+    public function playerUrl(string $url): MediaItem
+    {
+        $this->playerUrl = $url;
+        return $this;
+    }
+
+    public function playerWidth(int $width): MediaItem
+    {
+        $this->playerWidth = $width;
+        return $this;
+    }
+
+    public function playerHeight(int $height): MediaItem
+    {
+        $this->playerHeight = $height;
+        return $this;
+    }
+
+    //
+    // getters
+    //
+
+    // <media:content>
     public function getUrl(): ?string
     {
         return $this->url;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
     }
 
     public function getFiletype(): ?string
@@ -128,6 +222,11 @@ class MediaItem
         return $this->duration;
     }
 
+    public function getExpression(): ?string
+    {
+        return $this->expression;
+    }
+
     public function getWidth(): ?int
     {
         return $this->width;
@@ -136,5 +235,85 @@ class MediaItem
     public function getHeight(): ?int
     {
         return $this->height;
+    }
+
+    public function getBitrate(): ?int
+    {
+        return $this->bitrate;
+    }
+
+    public function getFramerate(): ?int
+    {
+        return $this->framerate;
+    }
+
+    public function getSamplingrate(): ?float
+    {
+        return $this->samplingrate;
+    }
+
+    public function getChannels(): ?int
+    {
+        return $this->channels;
+    }
+
+    public function getLang(): ?string
+    {
+        return $this->lang;
+    }
+
+    // <media:title>
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function getTitleType(): ?string
+    {
+        return $this->title_type;
+    }
+
+    // <media:thumbnail>
+    public function getThumbnail(): ?string
+    {
+        return $this->thumbnail;
+    }
+
+    public function getThumbnailWidth(): ?int
+    {
+        return $this->thumbnail_width;
+    }
+
+    public function getThumbnailHeight(): ?int
+    {
+        return $this->thumbnail_height;
+    }
+
+    // <media:description>
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    // <media:keywords>
+    public function getKeywords(): ?array
+    {
+        return $this->keywords;
+    }
+
+    // <media:player>
+    public function getPlayerUrl(): ?string
+    {
+        return $this->playerUrl;
+    }
+
+    public function getPlayerWidth(): ?int
+    {
+        return $this->playerWidth;
+    }
+
+    public function getPlayerHeight(): ?int
+    {
+        return $this->playerHeight;
     }
 }

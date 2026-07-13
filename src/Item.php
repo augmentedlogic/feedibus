@@ -62,7 +62,9 @@ class Item implements ItemInterface
      */
     protected $creator;
 
-    /** @var MediaItem */
+    /**
+     * @var MediaItem
+     */
     protected $media;
 
     protected $preferCdata = false;
@@ -147,7 +149,8 @@ class Item implements ItemInterface
         return $this;
     }
 
-    public function media(MediaItem $media) {
+    public function media(MediaItem $media)
+    {
         $this->media = $media;
         return $this;
     }
@@ -226,22 +229,101 @@ class Item implements ItemInterface
         }
 
         if (!empty($this->media)) {
-            $mediacontent = $xml->addChild('media:content','',"http://search.yahoo.com/mrss");
-            if($this->media->getUrl() !== null) {
+            // url, fileSize, type, medium, duration, expression
+            $mediacontent = $xml->addChild('media:content', '', 'http://search.yahoo.com/mrss');
+            if ($this->media->getUrl() !== null) {
                 $mediacontent->addAttribute('url', $this->media->getUrl());
-            }
-            if($this->media->getFilesize() !== null) {
-                $mediacontent->addAttribute('fileSize', $this->media->getFilesize());
+
+                if ($this->media->getFilesize() !== null) {
+                    $mediacontent->addAttribute('fileSize', $this->media->getFilesize());
+                }
+
+                if ($this->media->getFiletype() !== null) {
+                    $mediacontent->addAttribute('type', $this->media->getFiletype());
+                }
+
+                if ($this->media->getMedium() !== null) {
+                    $mediacontent->addAttribute('medium', $this->media->getMedium());
+                }
+
+                if ($this->media->getDuration() !== null) {
+                    $mediacontent->addAttribute('duration', $this->media->getDuration());
+                }
+
+                if ($this->media->getExpression() !== null) {
+                    $mediacontent->addAttribute('expression', $this->media->getExpression());
+                }
+
+                if ($this->media->getWidth() !== null) {
+                    $mediacontent->addAttribute('width', $this->media->getWidth());
+                }
+
+                if ($this->media->getHeight() !== null) {
+                    $mediacontent->addAttribute('height', $this->media->getHeight());
+                }
+
+                if ($this->media->getBitrate() != null) {
+                    $mediacontent->addAttribute('bitrate', $this->media->getBitrate());
+                }
+
+                if ($this->media->getFramerate() != null) {
+                    $mediacontent->addAttribute('framerate', $this->media->getFramerate());
+                }
+
+                if ($this->media->getSamplingrate() != null) {
+                    $mediacontent->addAttribute('samplingrate', $this->media->getSamplingrate());
+                }
+
+                if ($this->media->getChannels() != null) {
+                    $mediacontent->addAttribute('channels', $this->media->getChannels());
+                }
+
+                if ($this->media->getLang() != null) {
+                    $mediacontent->addAttribute('lang', $this->media->getLang());
+                }
             }
 
-            if($this->media->getTitle() !== null) {
-                $mediatitle = $xml->addChild('media:title',$this->media->getTitle(),"http://search.yahoo.com/mrss");
-                $mediatitle->addAttribute('type', 'plain');
+            // media:title
+            if ($this->media->getTitle() !== null) {
+                $mediatitle = $xml->addChild('media:title', $this->media->getTitle(), 'http://search.yahoo.com/mrss');
+                $mediatitle->addAttribute('type', $this->media->getTitleType());
             }
 
-            $mediadescription = $xml->addChild('media:description','',"http://search.yahoo.com/mrss");
-            $mediathumbnail = $xml->addChild('media:thumbnail','',"http://search.yahoo.com/mrss");
-            $mediacategory = $xml->addChild('media:category','',"http://search.yahoo.com/mrss");
+            // media:description
+            if ($this->media->getDescription() !== null) {
+                $mediadescription = $xml->addChild('media:description', $this->media->getDescription(), 'http://search.yahoo.com/mrss');
+            }
+
+            // media:thumbnail
+            if ($this->media->getThumbnail() !== null) {
+                $mediathumbnail = $xml->addChild('media:thumbnail', '', 'http://search.yahoo.com/mrss');
+                $mediathumbnail->addAttribute('url', $this->media->getThumbnail());
+
+                if ($this->media->getThumbnailWidth() !== null) {
+                    $mediathumbnail->addAttribute('width', $this->media->getThumbnailWidth());
+                }
+                if ($this->media->getThumbnailHeight() !== null) {
+                    $mediathumbnail->addAttribute('height', $this->media->getThumbnailHeight());
+                }
+            }
+
+            //  media:player
+            if ($this->media->getPlayerUrl() !== null) {
+                $mediaplayer = $xml->addChild('media:player', '', 'http://search.yahoo.com/mrss');
+                $mediaplayer->addAttribute('url', $this->media->getPlayerUrl());
+
+                if ($this->media->getPlayerWidth() !== null) {
+                    $mediaplayer->addAttribute('width', $this->media->getPlayerWidth());
+                }
+                if ($this->media->getPlayerHeight() !== null) {
+                    $mediaplayer->addAttribute('height', $this->media->getPlayerHeight());
+                }
+            }
+
+            // media:keywords
+            if ($this->media->getKeywords() !== null) {
+                $mediacategory = $xml->addChild('media:keywords', implode(',', $this->media->getKeywords()), 'http://search.yahoo.com/mrss');
+            }
         }
 
         return $xml;
