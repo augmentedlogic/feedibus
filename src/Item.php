@@ -1,43 +1,65 @@
 <?php
 
-namespace com\augmentedlogic\feedit;
+namespace com\augmentedlogic\feedibus;
 
 /**
  * Class Item
  */
 class Item implements ItemInterface
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $title;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $url;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $description;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $contentEncoded;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $categories = [];
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $guid;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     protected $isPermalink;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $pubDate;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $enclosure;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $author;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $creator;
 
     /** @var MediaItem */
@@ -121,7 +143,7 @@ class Item implements ItemInterface
 
     public function preferCdata($preferCdata)
     {
-        $this->preferCdata = (bool)$preferCdata;
+        $this->preferCdata = (bool) $preferCdata;
         return $this;
     }
 
@@ -153,7 +175,7 @@ class Item implements ItemInterface
         }
 
         // At least one of <title> or <description> must be present
-        if ($this->description || ! $this->title) {
+        if ($this->description || !$this->title) {
             if ($this->preferCdata) {
                 $xml->addCdataChild('description', $this->description);
             } else {
@@ -200,7 +222,7 @@ class Item implements ItemInterface
         }
 
         if (!empty($this->creator)) {
-            $xml->addChild('dc:creator', $this->creator,"http://purl.org/dc/elements/1.1/");
+            $xml->addChild('dc:creator', $this->creator, 'http://purl.org/dc/elements/1.1/');
         }
 
         if (!empty($this->media)) {

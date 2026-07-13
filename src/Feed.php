@@ -1,6 +1,6 @@
 <?php
 
-namespace com\augmentedlogic\feedit;
+namespace com\augmentedlogic\feedibus;
 
 use DOMDocument;
 

@@ -1,33 +1,32 @@
 <?php
 
-namespace com\augmentedlogic\feedit;
+namespace com\augmentedlogic\feedibus;
 
 /**
  * Class ChannelImage
  */
 class ChannelImage
 {
-
     private ?string $url = null;
     private ?string $title = null;
     private ?string $link = null;
 
     public function url(string $url): ChannelImage
     {
-       $this->url = $url;
-       return $this;
+        $this->url = $url;
+        return $this;
     }
 
     public function title(string $title): ChannelImage
     {
-       $this->title = $title;
-       return $this;
+        $this->title = $title;
+        return $this;
     }
 
     public function link(string $link): ChannelImage
     {
-       $this->link = $link;
-       return $this;
+        $this->link = $link;
+        return $this;
     }
 
     public function getUrl()
@@ -37,12 +36,11 @@ class ChannelImage
 
     public function getTitle()
     {
-       return $this->title;
+        return $this->title;
     }
 
     public function getLink()
     {
-      return $this->link;
+        return $this->link;
     }
-
 }

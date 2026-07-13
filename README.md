@@ -4,14 +4,32 @@ Originally a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-write
 
 # Changelog
 
+v0.5
+
+* namespace change
+* now available on packagist
+
 v0.2
 
 * added ChannelImage class
 * some preliminary typing for php 8
 
+## Installation
+
+```
+composer require augmentedlogic/feedibus
+```
+
 ## Usage
 
 ```php
+
+use com\augmentedlogic\feedibus\Channel;
+use com\augmentedlogic\feedibus\ChannelImage;
+use com\augmentedlogic\feedibus\Feed;
+use com\augmentedlogic\feedibus\Item;
+
+
 $feed = new Feed();
 
 $channelImage = new ChannelImage();
