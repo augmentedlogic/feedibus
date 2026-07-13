@@ -1,61 +1,80 @@
 <?php
 
-namespace com\augmentedlogic\feedit;
+namespace com\augmentedlogic\feedibus;
 
 /**
  * Class Channel
  */
 class Channel implements ChannelInterface
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $title;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $url;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $feedUrl;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $description;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $language;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $copyright;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $pubDate;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $lastBuildDate;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $ttl;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     protected $pubsubhubbub;
 
+    /**
+     * @var string
+     */
+    protected $imageUrl = null;
 
-	/**
-	 * @var string
-	 */
-	protected $imageUrl = null;
+    /**
+     * @var string
+     */
+    protected $imageTitle = null;
 
-	/**
-	 * @var string
-	 */
-	protected $imageTitle = null;
+    /**
+     * @var string
+     */
+    protected $imageLink = null;
 
-	/**
-	 * @var string
-	 */
-	protected $imageLink = null;
-
-
-
-    /** @var ItemInterface[] */
+    /**
+     * @var ItemInterface[]
+     */
     protected $items = [];
 
     /**
@@ -202,10 +221,10 @@ class Channel implements ChannelInterface
 
     public function image(ChannelImage $channel_image): Channel
     {
-		$this->imageUrl = $channel_image->getUrl();
-		$this->imageTitle = $channel_image->getTitle();
-		$this->imageLink = $channel_image->getLink();
-		return $this;
+        $this->imageUrl = $channel_image->getUrl();
+        $this->imageTitle = $channel_image->getTitle();
+        $this->imageLink = $channel_image->getLink();
+        return $this;
     }
 
     /**
@@ -219,12 +238,11 @@ class Channel implements ChannelInterface
         $xml->addChild('link', $this->url);
         $xml->addChild('description', $this->description);
 
-
-        if($this->feedUrl !== null) {
-            $link = $xml->addChild('atom:link', '', "http://www.w3.org/2005/Atom");
-            $link->addAttribute('href',$this->feedUrl);
-            $link->addAttribute('type','application/rss+xml');
-            $link->addAttribute('rel','self');
+        if ($this->feedUrl !== null) {
+            $link = $xml->addChild('atom:link', '', 'http://www.w3.org/2005/Atom');
+            $link->addAttribute('href', $this->feedUrl);
+            $link->addAttribute('type', 'application/rss+xml');
+            $link->addAttribute('rel', 'self');
         }
 
         if ($this->language !== null) {
@@ -258,17 +276,17 @@ class Channel implements ChannelInterface
             $hubUrl->addAttribute('href', $this->pubsubhubbub['hubUrl']);
         }
 
-        if($this->imageUrl !== null || $this->imageTitle !== null || $this->imageLink !== null) {
-            $imagexml = $xml->addChild("image");
-		if ($this->imageUrl !== null) {
-	            $imagexml->addChild('url', $this->imageUrl);
-		}
-		if ($this->imageTitle !== null) {
-	            $imagexml->addChild('title', $this->imageTitle);
-		}
-		if ($this->imageLink !== null) {
-	            $imagexml->addChild('link', $this->imageLink);
-		}
+        if ($this->imageUrl !== null || $this->imageTitle !== null || $this->imageLink !== null) {
+            $imagexml = $xml->addChild('image');
+            if ($this->imageUrl !== null) {
+                $imagexml->addChild('url', $this->imageUrl);
+            }
+            if ($this->imageTitle !== null) {
+                $imagexml->addChild('title', $this->imageTitle);
+            }
+            if ($this->imageLink !== null) {
+                $imagexml->addChild('link', $this->imageLink);
+            }
         }
 
         foreach ($this->items as $item) {
