@@ -12,6 +12,13 @@ v0.2
 ## Usage
 
 ```php
+
+use com\augmentedlogic\feedibus\Channel;
+use com\augmentedlogic\feedibus\ChannelImage;
+use com\augmentedlogic\feedibus\Feed;
+use com\augmentedlogic\feedibus\Item;
+
+
 $feed = new Feed();
 
 $channelImage = new ChannelImage();
