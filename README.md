@@ -5,6 +5,10 @@ a project of its own. Aims are to add Channel Image, Media RSS support and php 8
 
 # Changelog
 
+v0.7
+
+* documentation fixes
+
 v0.6
 
 * support for MediaRSS (most of it anyway, there are endless options)
@@ -33,6 +37,7 @@ use com\augmentedlogic\feedibus\Channel;
 use com\augmentedlogic\feedibus\ChannelImage;
 use com\augmentedlogic\feedibus\Feed;
 use com\augmentedlogic\feedibus\Item;
+use com\augmentedlogic\feedibus\MediaItem;
 
 
 $feed = new Feed();
