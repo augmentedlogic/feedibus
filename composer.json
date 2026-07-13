@@ -1,7 +1,7 @@
 {
   "name": "augmentedlogic/feedibus",
   "type": "library",
-  "description": "A relatively simple RSS writer",
+  "description": "RSS writer librray with support for most of the RSS specification, including media RSS",
   "homepage": "https://github.com/augmentedlogic/php-feedibus",
   "keywords": [
     "rss",

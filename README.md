@@ -1,8 +1,13 @@
 # feedibus
 
-Originally a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-writer) (July 2026), work in progress
+This originally started as a a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-writer) (in July 2026), but has become
+a project of its own. Aims are to add Channel Image, Media RSS support and php 8 compatibility.
 
 # Changelog
+
+v0.6
+
+* support for MediaRSS (most of it anyway, there are endless options)
 
 v0.5
 
@@ -68,6 +73,39 @@ $item
     ->appendTo($channel);
 
 
+// Media RSS item
+$mediaitem = new MediaItem();
+$mediaitem ->url("https://www.example.com")
+           ->title("Oh my wonderful RSS", "plain")
+           ->filesize(5020281)
+           ->filetype("audio/mpeg")
+           ->medium("audio")
+           ->width(1920)
+           ->height(1080)
+           ->bitrate(2500)
+           ->framerate(25)
+           ->samplingrate(44.1)
+           ->channels(2)
+           ->lang("en")
+           ->thumbnail("https://example.com/image.jpg")
+           ->thumbnailWidth(900)
+           ->thumbnailHeight(600)
+           ->expression("full")
+           ->description("a wonderful song")
+           ->keywords(array("rock", "blues"))
+           ->playerUrl("https://example.com")
+           ->playerWidth(1920)
+           ->playerHeight(1080);
+ 
+$item = new Item();
+$item
+    ->title('Some Media RSS Entry')
+    ->description('<div>Podcast body</div>')
+    ->url('http://podcast.example.com/2012/08/21/podcast-entry/')
+    ->media($mediaitem)
+    ->appendTo($channel);
+
+
 // Podcast item
 $item = new Item();
 $item
@@ -112,6 +150,17 @@ Output:
       <guid>http://blog.example.com/2012/08/21/blog-entry/</guid>
       <pubDate>Tue, 21 Aug 2012 10:50:37 +0000</pubDate>
       <author>John Smith</author>
+    </item>
+    <item xmlns:media="http://search.yahoo.com/mrss">
+      <title>Some Media RSS Entry</title>
+      <link>http://podcast.example.com/2012/08/21/podcast-entry/</link>
+      <description>&lt;div&gt;Podcast body&lt;/div&gt;</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss" url="https://www.example.com" fileSize="5020281" type="audio/mpeg" medium="audio" expression="full" width="1920" height="1080" bitrate="2500" framerate="25" samplingrate="44.1" channels="2" lang="en"/>
+      <media:title xmlns:media="http://search.yahoo.com/mrss" type="plain">Oh my wonderful RSS</media:title>
+      <media:description xmlns:media="http://search.yahoo.com/mrss">a wonderful song</media:description>
+      <media:thumbnail xmlns:media="http://search.yahoo.com/mrss" url="https://example.com/image.jpg" width="900" height="600"/>
+      <media:player xmlns:media="http://search.yahoo.com/mrss" url="https://example.com" width="1920" height="1080"/>
+      <media:keywords xmlns:media="http://search.yahoo.com/mrss">rock,blues</media:keywords>
     </item>
     <item>
       <title>Some Podcast Entry</title>
