@@ -29,17 +29,17 @@ class ChannelImage
         return $this;
     }
 
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
-    public function getTitle()
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function getLink()
+    public function getLink(): ?string
     {
         return $this->link;
     }

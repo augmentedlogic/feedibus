@@ -82,7 +82,7 @@ class Channel implements ChannelInterface
      * @param string $title
      * @return $this
      */
-    public function title($title)
+    public function title($title): Channel
     {
         $this->title = $title;
         return $this;
@@ -93,7 +93,7 @@ class Channel implements ChannelInterface
      * @param string $url
      * @return $this
      */
-    public function url($url)
+    public function url($url) : Channel
     {
         $this->url = $url;
         return $this;
@@ -115,7 +115,7 @@ class Channel implements ChannelInterface
      * @param string $description
      * @return $this
      */
-    public function description($description)
+    public function description($description) : Channel
     {
         $this->description = $description;
         return $this;
@@ -132,7 +132,7 @@ class Channel implements ChannelInterface
      * @param string $language
      * @return $this
      */
-    public function language($language)
+    public function language($language): Channel
     {
         $this->language = $language;
         return $this;
@@ -143,7 +143,7 @@ class Channel implements ChannelInterface
      * @param string $copyright
      * @return $this
      */
-    public function copyright($copyright)
+    public function copyright($copyright): Channel
     {
         $this->copyright = $copyright;
         return $this;
@@ -154,7 +154,7 @@ class Channel implements ChannelInterface
      * @param int $pubDate Unix timestamp
      * @return $this
      */
-    public function pubDate($pubDate)
+    public function pubDate($pubDate): Channel
     {
         $this->pubDate = $pubDate;
         return $this;
@@ -165,7 +165,7 @@ class Channel implements ChannelInterface
      * @param int $lastBuildDate Unix timestamp
      * @return $this
      */
-    public function lastBuildDate($lastBuildDate)
+    public function lastBuildDate($lastBuildDate): Channel
     {
         $this->lastBuildDate = $lastBuildDate;
         return $this;
@@ -176,7 +176,7 @@ class Channel implements ChannelInterface
      * @param int $ttl
      * @return $this
      */
-    public function ttl($ttl)
+    public function ttl($ttl): Channel
     {
         $this->ttl = $ttl;
         return $this;
@@ -188,7 +188,7 @@ class Channel implements ChannelInterface
      * @param string $hubUrl
      * @return $this
      */
-    public function pubsubhubbub($feedUrl, $hubUrl)
+    public function pubsubhubbub($feedUrl, $hubUrl): Channel
     {
         $this->pubsubhubbub = [
             'feedUrl' => $feedUrl,
@@ -202,7 +202,7 @@ class Channel implements ChannelInterface
      * @param ItemInterface $item
      * @return $this
      */
-    public function addItem(ItemInterface $item)
+    public function addItem(ItemInterface $item): Channel
     {
         $this->items[] = $item;
         return $this;
@@ -213,7 +213,7 @@ class Channel implements ChannelInterface
      * @param FeedInterface $feed
      * @return $this
      */
-    public function appendTo(FeedInterface $feed)
+    public function appendTo(FeedInterface $feed): Channel
     {
         $feed->addChannel($this);
         return $this;
@@ -231,7 +231,7 @@ class Channel implements ChannelInterface
      * Return XML object
      * @return SimpleXMLElement
      */
-    public function asXML()
+    public function asXML(): SimpleXMLElement
     {
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><channel></channel>', LIBXML_NOERROR | LIBXML_ERR_NONE | LIBXML_ERR_FATAL);
         $xml->addChild('title', $this->title);

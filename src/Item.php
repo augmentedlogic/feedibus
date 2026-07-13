@@ -69,37 +69,37 @@ class Item implements ItemInterface
 
     protected $preferCdata = false;
 
-    public function title($title)
+    public function title(string $title): Item
     {
         $this->title = $title;
         return $this;
     }
 
-    public function url($url)
+    public function url(string $url): Item
     {
         $this->url = $url;
         return $this;
     }
 
-    public function description($description)
+    public function description(string $description): Item
     {
         $this->description = $description;
         return $this;
     }
 
-    public function contentEncoded($content)
+    public function contentEncoded(string $content): Item
     {
         $this->contentEncoded = $content;
         return $this;
     }
 
-    public function category($name, $domain = null)
+    public function category(string $name, ?string $domain = null): Item
     {
         $this->categories[] = [$name, $domain];
         return $this;
     }
 
-    public function categories(array $categories)
+    public function categories(array $categories): Item
     {
         foreach ($categories as $cat) {
             $domain = null;
@@ -112,56 +112,56 @@ class Item implements ItemInterface
         return $this;
     }
 
-    public function guid($guid, $isPermalink = false)
+    public function guid(string $guid, bool $isPermalink = false): Item
     {
         $this->guid = $guid;
         $this->isPermalink = $isPermalink;
         return $this;
     }
 
-    public function pubDate($pubDate)
+    public function pubDate(string $pubDate): Item
     {
         $this->pubDate = $pubDate;
         return $this;
     }
 
-    public function enclosure($url, $length = 0, $type = 'audio/mpeg')
+    public function enclosure(string $url, int $length = 0, string $type = 'audio/mpeg'): Item
     {
         $this->enclosure = ['url' => $url, 'length' => $length, 'type' => $type];
         return $this;
     }
 
-    public function author($author)
+    public function author(string $author): Item
     {
         $this->author = $author;
         return $this;
     }
 
-    public function creator($creator)
+    public function creator(string $creator): Item
     {
         $this->creator = $creator;
         return $this;
     }
 
-    public function preferCdata($preferCdata)
+    public function preferCdata(bool $preferCdata): Item
     {
         $this->preferCdata = (bool) $preferCdata;
         return $this;
     }
 
-    public function media(MediaItem $media)
+    public function media(MediaItem $media): Item
     {
         $this->media = $media;
         return $this;
     }
 
-    public function appendTo(ChannelInterface $channel)
+    public function appendTo(ChannelInterface $channel): Item
     {
         $channel->addItem($this);
         return $this;
     }
 
-    public function asXML()
+    public function asXML(): SimpleXMlElement
     {
         $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8" ?><item></item>', LIBXML_NOERROR | LIBXML_ERR_NONE | LIBXML_ERR_FATAL);
 

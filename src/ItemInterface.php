@@ -12,28 +12,28 @@ interface ItemInterface
      * @param string $title
      * @return $this
      */
-    public function title($title);
+    public function title(string $title);
 
     /**
      * Set item URL
      * @param string $url
      * @return $this
      */
-    public function url($url);
+    public function url(string $url);
 
     /**
      * Set item description
      * @param string $description
      * @return $this
      */
-    public function description($description);
+    public function description(string $description);
 
     /**
      * Set content:encoded
      * @param string $content
      * @return $this
      */
-    public function contentEncoded($content);
+    public function contentEncoded(string $content);
 
     /**
      * Set item category
@@ -41,7 +41,7 @@ interface ItemInterface
      * @param string $domain Category URL
      * @return $this
      */
-    public function category($name, $domain = null);
+    public function category(string $name, ?string $domain = null);
 
     /**
      * Set GUID
@@ -49,14 +49,14 @@ interface ItemInterface
      * @param bool $isPermalink
      * @return $this
      */
-    public function guid($guid, $isPermalink = false);
+    public function guid(string $guid, bool $isPermalink = false);
 
     /**
      * Set published date
      * @param int $pubDate Unix timestamp
      * @return $this
      */
-    public function pubDate($pubDate);
+    public function pubDate(string $pubDate);
 
     /**
      * Set enclosure
@@ -65,14 +65,14 @@ interface ItemInterface
      * @param string $type Media type, default is audio/mpeg
      * @return $this
      */
-    public function enclosure($url, $length = 0, $type = 'audio/mpeg');
+    public function enclosure(string $url, int $length = 0, string $type = 'audio/mpeg');
 
     /**
      * Set the author
      * @param string $author Email of item author
      * @return $this
      */
-    public function author($author);
+    public function author(string $author);
 
     /**
      * Append item to the channel
