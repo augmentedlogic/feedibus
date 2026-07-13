@@ -1,6 +1,6 @@
 # feedibus
 
-This originally started as a a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-writer) (in July 2026), but has become
+This originally started as a a fork of [suin/php-rss-writer](https://github.com/suin/php-rss-writer) (in July 2026), but has become
 a project of its own. Aims are to add Channel Image, Media RSS support and php 8 compatibility.
 
 # Changelog
