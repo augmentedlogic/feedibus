@@ -1,4 +1,4 @@
-# php-feedit
+# feedibus
 
 Originally a fork of [https://github.com/suin/php-rss-writer](suin/php-rss-writer) (July 2026), work in progress
 
