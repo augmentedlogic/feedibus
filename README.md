@@ -163,6 +163,7 @@ Output:
       <guid>http://blog.example.com/2012/08/21/blog-entry/</guid>
       <pubDate>Tue, 21 Aug 2012 10:50:37 +0000</pubDate>
       <author>John Smith</author>
+      <source>http://blog.example.com/</source>
     </item>
     <item xmlns:media="http://search.yahoo.com/mrss">
       <title>Some Media RSS Entry</title>
@@ -174,6 +175,7 @@ Output:
       <media:thumbnail xmlns:media="http://search.yahoo.com/mrss" url="https://example.com/image.jpg" width="900" height="600"/>
       <media:player xmlns:media="http://search.yahoo.com/mrss" url="https://example.com" width="1920" height="1080"/>
       <media:keywords xmlns:media="http://search.yahoo.com/mrss">rock,blues</media:keywords>
+      <media:hash xmlns:media="http://search.yahoo.com/mrss" algo="md5">bf1ab2d7290a1bed086fdab56f268f48</media:hash>
     </item>
     <item>
       <title>Some Podcast Entry</title>
