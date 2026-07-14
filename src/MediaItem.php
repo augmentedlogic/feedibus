@@ -36,12 +36,14 @@ class MediaItem
     private ?string $playerUrl = null;
     private ?int $playerWith = null;
     private ?int $playerHeight = null;
+    // <media:hash>
+    private ?string $hash = null;
+    private string $algo = "md5";
+
     // NOT YET IMPLEMENTED
     private ?string $category = null;
     // <media:rating>
     private ?string $rating = null;
-    // <media:hash>
-    private ?string $hash = null;
     // <media:copyright>
     private ?string $copyright = null;
     private ?string $copyright_url = null;
@@ -192,6 +194,14 @@ class MediaItem
         return $this;
     }
 
+    // <media:hash>
+    public function hash(string $hash, string $algo = "md5"): MediaItem
+    {
+        $this->hash = $hash;
+        $this->algo = $algo;
+        return $this;
+    }
+
     //
     // getters
     //
@@ -316,4 +326,16 @@ class MediaItem
     {
         return $this->playerHeight;
     }
+
+    // <media:hash>
+    public function getHash(): ?string
+    {
+        return $this->hash;
+    }
+
+    public function getAlgo(): string
+    {
+        return $this->algo;
+    }
+
 }

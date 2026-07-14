@@ -5,6 +5,11 @@ a project of its own. Aims are to add Channel Image, Media RSS support and php 8
 
 # Changelog
 
+v0.8.1
+
+* added <source> tag for Item
+* added Media RSS <media:hash> tag
+
 v0.7
 
 * documentation fixes
@@ -75,6 +80,7 @@ $item
     ->pubDate(strtotime('Tue, 21 Aug 2012 19:50:37 +0900'))
     ->guid('http://blog.example.com/2012/08/21/blog-entry/', true)
     ->preferCdata(true) // By this, title and description become CDATA wrapped HTML.
+    ->source('http://blog.example.com/')
     ->appendTo($channel);
 
 
@@ -101,6 +107,8 @@ $mediaitem ->url("https://www.example.com")
            ->playerUrl("https://example.com")
            ->playerWidth(1920)
            ->playerHeight(1080);
+           ->hash('bf1ab2d7290a1bed086fdab56f268f48', 'md5');
+
  
 $item = new Item();
 $item

@@ -63,6 +63,11 @@ class Item implements ItemInterface
     protected $creator;
 
     /**
+     * @var source
+     */
+    protected $source;
+
+    /**
      * @var MediaItem
      */
     protected $media;
@@ -149,6 +154,12 @@ class Item implements ItemInterface
         return $this;
     }
 
+    public function source(string $source): Item
+    {
+        $this->source = (string) $source;
+        return $this;
+    }
+
     public function media(MediaItem $media): Item
     {
         $this->media = $media;
@@ -226,6 +237,10 @@ class Item implements ItemInterface
 
         if (!empty($this->creator)) {
             $xml->addChild('dc:creator', $this->creator, 'http://purl.org/dc/elements/1.1/');
+        }
+
+        if (!empty($this->source)) {
+            $xml->addChild('source', $this->source);
         }
 
         if (!empty($this->media)) {
@@ -324,6 +339,12 @@ class Item implements ItemInterface
             if ($this->media->getKeywords() !== null) {
                 $mediacategory = $xml->addChild('media:keywords', implode(',', $this->media->getKeywords()), 'http://search.yahoo.com/mrss');
             }
+
+            if ($this->media->getHash() !== null) {
+                $mediahash = $xml->addChild('media:hash', $this->media->getHash(), 'http://search.yahoo.com/mrss');
+                $mediahash->addAttribute('algo', $this->media->getAlgo());
+            }
+
         }
 
         return $xml;

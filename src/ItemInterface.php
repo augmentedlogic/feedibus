@@ -75,6 +75,13 @@ interface ItemInterface
     public function author(string $author);
 
     /**
+     * Set the source
+     * @param string $source
+     * @return $this
+     */
+    public function source(string $source);
+
+    /**
      * Append item to the channel
      * @return $this
      */
